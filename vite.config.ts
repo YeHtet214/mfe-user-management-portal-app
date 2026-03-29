@@ -9,9 +9,9 @@ export default defineConfig({
   plugins: [react()],
   base: isGitHubActions && repositoryName ? `/${repositoryName}/` : '/',
   server: {
-    host: 'user.laravel-api-for-microfrontend.test',
+    host: 'user.mfe-server.test',
     port: 5174,
     strictPort: true,
-    allowedHosts: ['user.laravel-api-for-microfrontend.test', 'auth.laravel-api-for-microfrontend.test'],
+    allowedHosts: ['user.mfe-server.test', 'auth.mfe-server.test'],
   },
 })
