@@ -12,7 +12,7 @@ const userSchema = z.object({
   email: z.string().email("Invalid email address"),
   password: z.string().min(8, "Password must be at least 8 characters").optional().or(z.literal("")),
   password_confirmation: z.string().optional().or(z.literal("")),
-  role_id: z.coerce.number().min(1, "Role is required"),
+  role_id: z.number(),
   status: z.enum(["active", "inactive"]),
 });
 
@@ -26,11 +26,11 @@ const refinedUserSchema = userSchema.refine((data) => {
   path: ["password_confirmation"],
 });
 
-export type UserFormData = z.infer<typeof refinedUserSchema>;
+export type UserFormData = z.infer<typeof userSchema>;
 
 export interface UserFormProps {
   initialData?: any;
-  onSubmit: (data: UserFormData) => Promise<void>;
+  onSubmit: (data: any) => Promise<void>;
   onCancel: () => void;
   isEdit?: boolean;
   externalErrors?: Record<string, string[]>;
@@ -54,7 +54,7 @@ export function UserForm({ initialData, onSubmit, onCancel, isEdit, externalErro
       name: initialData?.name || "",
       email: initialData?.email || "",
       status: initialData?.status || "active",
-      role_id: initialData?.role?.id || initialData?.role_id || undefined,
+      role_id: Number(initialData?.role?.id) || Number(initialData?.role_id) || 0,
     },
   });
 
@@ -62,8 +62,14 @@ export function UserForm({ initialData, onSubmit, onCancel, isEdit, externalErro
     const loadRoles = async () => {
       try {
         setIsLoadingRoles(true);
-        const response = await fetchRoles({ dropdown: 1 });
-        setRoles(response.data);
+        const rolesResponse = await fetchRoles({ dropdown: 1 });
+        if ('data' in rolesResponse) {
+          if ('data' in rolesResponse.data && Array.isArray(rolesResponse.data.data)) {
+            setRoles(rolesResponse.data.data);
+          } else if (Array.isArray(rolesResponse.data)) {
+            setRoles(rolesResponse.data);
+          }
+        }
       } catch (error) {
         console.error("Failed to load roles:", error);
       } finally {
@@ -79,7 +85,7 @@ export function UserForm({ initialData, onSubmit, onCancel, isEdit, externalErro
         name: initialData.name || "",
         email: initialData.email || "",
         status: initialData.status || "active",
-        role_id: initialData.role?.id || initialData.role_id || undefined,
+        role_id: Number(initialData.role?.id) || Number(initialData.role_id) || 0,
       });
     }
   }, [initialData, reset]);

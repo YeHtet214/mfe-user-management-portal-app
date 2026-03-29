@@ -1,4 +1,4 @@
-import { Plus, Edit2, Trash2, Shield, Users as UsersIcon } from "lucide-react";
+import { Plus, Edit2, Trash2, Shield } from "lucide-react";
 import { Link } from "react-router-dom";
 import { PageHeader } from "../../components/layout/PageHeader";
 import { DataTable } from "../../components/shared/DataTable";

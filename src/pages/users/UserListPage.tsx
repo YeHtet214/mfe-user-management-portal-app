@@ -1,4 +1,4 @@
-import { Plus, Search, Filter, MoreVertical, Eye, Edit2, UserX, UserCheck, ChevronLeft, ChevronRight } from "lucide-react";
+import { Plus, Eye, Edit2, UserX, UserCheck, ChevronLeft, ChevronRight } from "lucide-react";
 import { useEffect, useState, useCallback } from "react";
 import { Link } from "react-router-dom";
 import { PageHeader } from "../../components/layout/PageHeader";

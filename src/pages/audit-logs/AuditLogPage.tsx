@@ -2,7 +2,7 @@ import { PageHeader } from "../../components/layout/PageHeader";
 import { DataTable } from "../../components/shared/DataTable";
 import { StatusBadge } from "../../components/shared/StatusBadge";
 import { SearchInput } from "../../components/shared/SearchInput";
-import { History, Filter, User, Shield, AppWindow, Calendar, Search, MoreVertical } from "lucide-react";
+import { History, Filter, User, Shield, AppWindow, Calendar, Search } from "lucide-react";
 import { useState } from "react";
 
 interface AuditLog {
@@ -84,7 +84,7 @@ export function AuditLogPage() {
     },
     {
       header: "Actions",
-      accessor: (row: AuditLog) => (
+      accessor: (_row: AuditLog) => (
         <button className="p-1.5 text-gray-400 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors">
           <Search className="w-4 h-4" />
         </button>

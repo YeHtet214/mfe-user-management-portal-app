@@ -1,7 +1,7 @@
 import { useParams, Link } from "react-router-dom";
 import { PageHeader } from "../../components/layout/PageHeader";
 import { StatusBadge } from "../../components/shared/StatusBadge";
-import { Edit2, UserX, UserCheck, Key, Shield, AppWindow, Clock, Mail, Calendar, ChevronRight } from "lucide-react";
+import { Edit2, UserX, UserCheck, Shield, Mail, Calendar } from "lucide-react";
 import { useState, useEffect, useCallback } from "react";
 import { ConfirmDialog } from "../../components/shared/ConfirmDialog";
 import { fetchUser, updateUserStatus } from "../../services/userApi";

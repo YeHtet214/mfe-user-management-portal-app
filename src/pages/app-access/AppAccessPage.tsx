@@ -1,4 +1,4 @@
-import { AppWindow, Users, Shield, CheckCircle2, XCircle } from "lucide-react";
+import { AppWindow, Users, Shield } from "lucide-react";
 import { PageHeader } from "../../components/layout/PageHeader";
 import { StatusBadge } from "../../components/shared/StatusBadge";
 
