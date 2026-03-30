@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useAuth } from "../../contexts/AuthContext";
 import { UnauthorizedPage } from "../../pages/auth/UnauthorizedPage";
 
@@ -7,13 +7,7 @@ interface ProtectedRouteProps {
 }
 
 export const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
-	const { isAuthenticated, isLoading, login } = useAuth();
-
-	useEffect(() => {
-		if (!isLoading && !isAuthenticated) {
-			login();
-		}
-	}, [isLoading, isAuthenticated, login]);
+	const { isAuthenticated, isLoading } = useAuth();
 
 	if (isLoading) {
 		return (

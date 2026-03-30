@@ -2,7 +2,6 @@ import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import { AuthProvider } from "./contexts/AuthContext";
 import { ProtectedRoute } from "./components/auth/ProtectedRoute";
 import { MainLayout } from "./layouts/MainLayout/MainLayout";
-import { LoginPage } from "./pages/auth/LoginPage";
 import { UnauthorizedPage } from "./pages/auth/UnauthorizedPage";
 import { DashboardPage } from "./pages/dashboard/DashboardPage";
 import { UserListPage } from "./pages/users/UserListPage";
@@ -24,7 +23,6 @@ function App() {
       <BrowserRouter>
         <Routes>
           {/* Auth Routes */}
-          <Route path="/login" element={<LoginPage />} />
           <Route path="/unauthorized" element={<UnauthorizedPage />} />
           
           {/* Main App Routes - Protected */}
