@@ -12,7 +12,7 @@ const userSchema = z.object({
   email: z.string().email("Invalid email address"),
   password: z.string().min(8, "Password must be at least 8 characters").optional().or(z.literal("")),
   password_confirmation: z.string().optional().or(z.literal("")),
-  role_id: z.number(),
+  role_id: z.number().min(1, "Please select a role"),
   status: z.enum(["active", "inactive"]),
 });
 
@@ -159,14 +159,14 @@ export function UserForm({ initialData, onSubmit, onCancel, isEdit, externalErro
         <div className="space-y-2">
           <label className="text-sm font-semibold text-gray-700">Role</label>
           <select
-            {...register("role_id")}
+            {...register("role_id", { valueAsNumber: true })}
             disabled={isLoadingRoles}
             className={cn(
               "block w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all appearance-none disabled:opacity-50",
               errors.role_id ? "border-red-500 focus:ring-red-500" : ""
             )}
           >
-            <option value="">Select a role</option>
+            <option value="0">{isLoadingRoles ? "Loading roles..." : "Select a role"}</option>
             {roles.map((role) => (
               <option key={role.id} value={role.id}>{role.name}</option>
             ))}

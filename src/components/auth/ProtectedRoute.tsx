@@ -17,9 +17,9 @@ export const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
 		);
 	}
 
-	if (!isAuthenticated) {
-		return <UnauthorizedPage />; // The useEffect will handle the redirection
-	}
+	// if (!isAuthenticated) {
+	// 	return <UnauthorizedPage />; // The useEffect will handle the redirection
+	// }
 
 	return <>{children}</>;
 };

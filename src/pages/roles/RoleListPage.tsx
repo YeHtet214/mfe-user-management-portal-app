@@ -131,7 +131,7 @@ export function RoleListPage() {
             className={cn(
               "inline-flex items-center gap-2 px-4 py-2 font-bold rounded-xl shadow-lg transition-all",
               canManage
-                ? "bg-purple-600 hover:bg-purple-700 text-white shadow-purple-200"
+                ? "bg-blue-600 hover:bg-blue-700 !text-white shadow-blue-200"
                 : "bg-gray-100 text-gray-400 cursor-not-allowed opacity-60 shadow-none"
             )}
           >
